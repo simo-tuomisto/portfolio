@@ -1,13 +1,13 @@
 program travel
 	use sizes
-    !use mpi
+	!use mpi
 	implicit none
-    include 'mpif.h'
+	include 'mpif.h'
 	
-    integer,parameter			:: bufsize=200					! Buffer for strings
-    integer,parameter			:: unit_number=10				! Unit number for configuration file
+	integer,parameter			:: bufsize=200					! Buffer for strings
+	integer,parameter			:: unit_number=10				! Unit number for configuration file
 	
-	real(kind=rk),allocatable 	:: x(:),y(:)					! Coordinate arrays for cities (ncities)
+	real(kind=rk),allocatable	:: x(:),y(:)					! Coordinate arrays for cities (ncities)
 	integer, allocatable		:: population(:,:)				! Population array (ncities, pop_size)
 	integer, allocatable		:: result_population(:,:)		! Population array (ncities, pop_size) for results
 	integer, allocatable		:: picked(:)					! Utility array for temporary population holding
@@ -48,7 +48,7 @@ program travel
 	integer 					:: mpierr						! MPI error integer
 	integer						:: mpistatus(MPI_STATUS_SIZE)	! MPI status array
 	
-	real(kind=rk)					:: t1,t2
+	real(kind=rk)				:: t1,t2
 
 	! -------------------------------------------------------------------------
 	! MPI initiation
