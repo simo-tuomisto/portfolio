@@ -8,9 +8,9 @@ program travel
     integer,parameter            :: unit_number=10                  ! Unit number for configuration file
     
     real(kind=rk),allocatable    :: x(:),y(:)                       ! Coordinate arrays for cities (ncities)
-    integer, allocatable        :: population(:,:)                  ! Population array (ncities, pop_size)
-    integer, allocatable        :: result_population(:,:)           ! Population array (ncities, pop_size) for results
-    integer, allocatable        :: picked(:)                        ! Utility array for temporary population holding
+    integer,allocatable          :: population(:,:)                 ! Population array (ncities, pop_size)
+    integer,allocatable          :: result_population(:,:)          ! Population array (ncities, pop_size) for results
+    integer,allocatable          :: picked(:)                       ! Utility array for temporary population holding
     real(kind=rk),allocatable    :: energies(:)                     ! Energies of routes
     real(kind=rk),allocatable    :: result_energies(:)              ! Energies of best routes
     real(kind=rk)                :: Esum                            ! Sum of all energies for the partition function
@@ -20,33 +20,33 @@ program travel
     real(kind=rk)                :: lmin                            ! Min length of route
     real(kind=rk)                :: lmax                            ! Max length of route
     
-    integer                        :: seed,seed_size                ! Seed 
-    integer, allocatable        :: seed_array(:)                    ! Array for seeds
+    integer                      :: seed,seed_size                  ! Seed 
+    integer,allocatable          :: seed_array(:)                   ! Array for seeds
     real(kind=rk)                :: u_r                             ! Random real
-    integer                        :: u_i                           ! Random integer
+    integer                      :: u_i                             ! Random integer
     
-    integer                        :: pop_size                      ! Population size
-    integer                        :: migration_rate                ! Migration rate
-    integer                        :: migration_n                   ! Number of routes to migrate
-    integer                        :: n_cities                      ! Number of cities
-    integer                        :: printstep                     ! Print step rate
+    integer                      :: pop_size                        ! Population size
+    integer                      :: migration_rate                  ! Migration rate
+    integer                      :: migration_n                     ! Number of routes to migrate
+    integer                      :: n_cities                        ! Number of cities
+    integer                      :: printstep                       ! Print step rate
     real(kind=rk)                :: mutation_p                      ! Mutation probability
-    integer                        :: i,j,k,l                       ! Index integers
-    integer                        :: ex,ex1,ex2                    ! Integers for existence checking
-    integer                        :: n_picked                      ! Number of cities that remain to be picked
-    integer                        :: city0, city1, city2           ! City number integers
+    integer                      :: i,j,k,l                         ! Index integers
+    integer                      :: ex,ex1,ex2                      ! Integers for existence checking
+    integer                      :: n_picked                        ! Number of cities that remain to be picked
+    integer                      :: city0, city1, city2             ! City number integers
     real(kind=rk)                :: r1,r2                           ! City distance variables
-    integer                        :: n, steps                      ! Time step integers
+    integer                      :: n, steps                        ! Time step integers
     
-    integer                        :: n_args                        ! Number of command line arguments
-    character(len=bufsize)        :: arg                            ! Char array for command line arguments
+    integer                      :: n_args                          ! Number of command line arguments
+    character(len=bufsize)       :: arg                             ! Char array for command line arguments
     
-    integer                     :: rank                             ! Rank of this task
-    integer                        :: next_rank,prev_rank           ! Rank of next and previous tasks
-    integer                     :: ntasks                           ! Number of tasks
-    integer                     :: ioerr                            ! I/O error integer
-    integer                     :: mpierr                           ! MPI error integer
-    integer                        :: mpistatus(MPI_STATUS_SIZE)    ! MPI status array
+    integer                      :: rank                            ! Rank of this task
+    integer                      :: next_rank,prev_rank             ! Rank of next and previous tasks
+    integer                      :: ntasks                          ! Number of tasks
+    integer                      :: ioerr                           ! I/O error integer
+    integer                      :: mpierr                          ! MPI error integer
+    integer                      :: mpistatus(MPI_STATUS_SIZE)      ! MPI status array
     
     real(kind=rk)                :: t1,t2
 
